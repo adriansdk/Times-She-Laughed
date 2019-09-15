@@ -18,4 +18,4 @@ app.get('/', (req,res,next)=>{
 
 
 //PORT WE ARE LISTENING IN NODEMON
-app.listen(3000)
+app.listen(process.env.PORT || 5000)
