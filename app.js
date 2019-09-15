@@ -12,7 +12,7 @@ app.use('/posts', () => {
 //ROUTES
 
 app.get('/', (req,res,next)=>{
-    res.render('index')
+    res.send('we are home! this is the heroku one, testing automatic deploy')
 })
 
 
