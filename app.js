@@ -1,19 +1,22 @@
 const express = require('express')
-const app = express()
+const app = express();
+const mongoose = require('mongoose')
+require('dotenv/config')
 
+// IMPORT ROUTES
 
-//MIDDLEWARE
-app.use('/posts', () => {
+const routes = require('./routes/index');
 
-})
-
-
-
-//ROUTES
-
-app.get('/', (req,res,next)=>{
-    res.send('we are home! this is the heroku one, testing automatic deploy')
-})
+app.use('/', routes);
+ 
+mongoose
+  .connect(process.env.DB_CONNECTION, {useNewUrlParser: true})
+  .then(x => {
+    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+  })
+  .catch(err => {
+    console.error('Error connecting to mongo', err)
+  });
 
 
 
